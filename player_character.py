@@ -7,8 +7,8 @@ import os
 main_character ={"player": "", "character": "", "class": "", "level": 1, "max_hp": 100, "current_hp": 100, "max_stamina": 100, "current_stamina": 100, "max_mana": 100, "current_mana": 100, "physical": 1, "mental": 1, "social": 1, "skills": {}}  # Dictionary to store character data
 warrior_stats = {"player": "", "character": "", "class": "Warrior", "level": 1, "max_hp": 120, "current_hp": 120, "max_stamina": 120, "current_stamina": 120, "max_mana": 80, "current_mana": 80, "physical": 3, "mental": 1, "social": 1, "skills": {"Sword Slash": 1, "Shield Block": 1}}  # Dictionary to store warrior stats
 mage_stats = {"player": "", "character": "", "class": "Mage", "level": 1, "max_hp": 80, "current_hp": 80, "max_stamina": 80, "current_stamina": 80, "max_mana": 120, "current_mana": 120, "physical": 1, "mental": 3, "social": 1, "skills": {"Burning Hands": 1, "Decipher Script": 1}}  # Dictionary to store mage stats
-rogue_stats = {"player": "", "character": "", "class": "Rogue", "level": 1, "max_hp": 100, "max_stamina": 100, "max_mana": 100, "physical": 2, "mental": 1, "social": 2, "skills": {"Stealth": 1, "Pick Lock": 1}}  # Dictionary to store rogue stats
-cleric_stats = {"player": "", "character": "", "class": "Cleric", "level": 1, "max_hp": 100, "max_stamina": 100, "max_mana": 100, "physical": 1, "mental": 2, "social": 2, "skills": {"Heal": 1, "Persuade": 1}}  # Dictionary to store cleric stats
+rogue_stats = {"player": "", "character": "", "class": "Rogue", "level": 1, "max_hp": 100, "current_hp": 100, "max_stamina": 100, "current_stamina": 100, "max_mana": 100, "current_mana": 100, "physical": 2, "mental": 1, "social": 2, "skills": {"Stealth": 1, "Pick Lock": 1}}  # Dictionary to store rogue stats
+cleric_stats = {"player": "", "character": "", "class": "Cleric", "level": 1, "max_hp": 100, "current_hp": 100, "max_stamina": 100, "current_stamina": 100, "max_mana": 100, "current_mana": 100, "physical": 1, "mental": 2, "social": 2, "skills": {"Heal": 1, "Persuade": 1}}  # Dictionary to store cleric stats
 
 def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
@@ -22,13 +22,13 @@ def character_classes():
 def create_character():
     clear_screen()
     global main_character
-    print("Creating a new character...")
+    print("Creating a new character...\n")
     player_name = input("Enter your name: ")
     character_name = input("Enter your character's name: ")
     #main_character["class"] = input("Choose your character's class: ")
     while True:
         try:
-            choice = int(input("Choose your character's class:\n1. Warrior\n2. Mage\n3. Rogue\n4. Cleric\nEnter your choice: "))
+            choice = int(input("Choose your character's class:\n  1. Warrior\n  2. Mage\n  3. Rogue\n  4. Cleric\nEnter your choice: "))
             if choice == 1:
                 main_character = warrior_stats.copy()
                 break
@@ -47,7 +47,6 @@ def create_character():
             print("Invalid choice. Please try again.")
     main_character["player"] = player_name
     main_character["character"] = character_name
-    print(main_character)
     print("Character created successfully!")
     input("Press any key to return to main menu.")
     return
@@ -80,33 +79,9 @@ def display_character():
 # Function to update character information
 def update_character():
     clear_screen()
-    print("Updating character...")
-    main_character["player"] = input("Enter your name: ")
+    print("Updating character name...")
     main_character["character"] = input("Enter your character's name: ")
-    main_character["class"] = input("Enter your character's class: ")
     print("Character updated successfully!")
-    input("Press any key to return to main menu.")
-    return
-
-# Function to delete character information
-def delete_character():
-    clear_screen()
-    print("Deleting character...")
-    main_character["player"] = ""
-    main_character["character"] = ""
-    main_character["class"] = ""
-    main_character["level"] = 1
-    main_character["max_hp"] = 100
-    main_character["current_hp"] = 100
-    main_character["max_stamina"] = 100
-    main_character["current_stamina"] = 100
-    main_character["max_mana"] = 100
-    main_character["current_mana"] = 100
-    main_character["physical"] = 1
-    main_character["mental"] = 1
-    main_character["social"] = 1
-    main_character["skills"] = {}
-    print("Character deleted successfully!")
     input("Press any key to return to main menu.")
     return
 
@@ -138,10 +113,9 @@ def display_menu():
     print("  1. Create character")
     print("  2. Display character")
     print("  3. Update character")
-    print("  4. Delete character")
-    print("  5. Save character")
-    print("  6. Load character")
-    print("  7. Exit")
+    print("  4. Save character")
+    print("  5. Load character")
+    print("  6. Exit")
 
 # Function to run the main menu
 def run_menu():
@@ -155,12 +129,10 @@ def run_menu():
         elif choice == "3":
             update_character()
         elif choice == "4":
-            delete_character()
-        elif choice == "5":
             save_character()
-        elif choice == "6":
+        elif choice == "5":
             load_character()
-        elif choice == "7":
+        elif choice == "6":
             break
         else:
             print("Invalid choice. Please try again.")
