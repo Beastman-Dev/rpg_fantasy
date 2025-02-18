@@ -11,6 +11,11 @@ character_stamina = {"max": 100, "current": 100}
 character_mana = {"max": 100, "current": 100}
 character_stats = {"physical": 1, "mental": 1, "social": 1}
 character_skills = {}
+main_character ={"player": "", "character": "", "class": "", "level": 1, "max_hp": 100, "current_hp": 100, "max_stamina": 100, "current_stamina": 100, "max_mana": 100, "current_mana": 100, "physical": 1, "mental": 1, "social": 1, "skills": {}}  # Dictionary to store character data
+warrior_skills = {"Sword Slash": 0, "Shield Block": 0}
+mage_skills = {"Burning Hands": 0, "Decipher Script": 0}
+rogue_skills = {"Stealth": 0, "Pick Lock": 0}
+cleric_skills = {"Heal": 0, "Persuade": 0}
 
 # Define global variables for game text
 welcome_text = "Welcome to First Fantasy RPG!"
@@ -36,10 +41,10 @@ def create_character():
     print("Great! Your character's name is " + player_character["character"] + ".")
     print("Now, let's choose your character's class.")
     # print("Choose from the following classes:")
-    print("1. Warrior")
-    print("2. Mage")
-    print("3. Rogue")
-    print("4. Cleric")
+    print("    1. Warrior")
+    print("    2. Mage")
+    print("    3. Rogue")
+    print("    4. Cleric")
     class_choice = input("What class would you like to be? ")
     clear_screen()
     if class_choice == "1":
@@ -101,7 +106,7 @@ def save_data_manager(folder_path, filename):
             print(f"Slot {slot}")
     else:
         print("No existing save slots found.")
-    
+
     # Prompt user to save or load character
     print("\n1. Load character\n2. Save character\n3. Return to main menu")
     choice = input("Enter your choice: ")
