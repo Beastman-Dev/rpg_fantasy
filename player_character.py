@@ -4,75 +4,160 @@
 import os
 
 # Global variables
-main_character ={"player": "", "character": "", "class": "", "level": 1, "max_hp": 100, "current_hp": 100, "max_stamina": 100, "current_stamina": 100, "max_mana": 100, "current_mana": 100, "physical": 1, "mental": 1, "social": 1, "skills": {}}  # Dictionary to store character data
-warrior_stats = {"player": "", "character": "", "class": "Warrior", "level": 1, "max_hp": 120, "current_hp": 120, "max_stamina": 120, "current_stamina": 120, "max_mana": 80, "current_mana": 80, "physical": 3, "mental": 1, "social": 1, "skills": {"Sword Slash": 1, "Shield Block": 1}}  # Dictionary to store warrior stats
-mage_stats = {"player": "", "character": "", "class": "Mage", "level": 1, "max_hp": 80, "current_hp": 80, "max_stamina": 80, "current_stamina": 80, "max_mana": 120, "current_mana": 120, "physical": 1, "mental": 3, "social": 1, "skills": {"Burning Hands": 1, "Decipher Script": 1}}  # Dictionary to store mage stats
-rogue_stats = {"player": "", "character": "", "class": "Rogue", "level": 1, "max_hp": 100, "current_hp": 100, "max_stamina": 100, "current_stamina": 100, "max_mana": 100, "current_mana": 100, "physical": 2, "mental": 1, "social": 2, "skills": {"Stealth": 1, "Pick Lock": 1}}  # Dictionary to store rogue stats
-cleric_stats = {"player": "", "character": "", "class": "Cleric", "level": 1, "max_hp": 100, "current_hp": 100, "max_stamina": 100, "current_stamina": 100, "max_mana": 100, "current_mana": 100, "physical": 1, "mental": 2, "social": 2, "skills": {"Heal": 1, "Persuade": 1}}  # Dictionary to store cleric stats
+main_character ={
+    "player": "", 
+    "name": "", 
+    "class": "", 
+    "level": 1, 
+    "max_hp": 0, 
+    "current_hp": 0, 
+    "max_stamina": 0, 
+    "current_stamina": 0, 
+    "max_mana": 0, 
+    "current_mana": 0, 
+    "physical": 0, 
+    "mental": 0, 
+    "social": 0, 
+    "combat_skill": 0,
+    "magic_skill": 0,
+    "charm_skill": 0,
+    "weapon_modifier": 0,
+    "spell_modifier": 0,
+    "social_modifier": 0,
+    "physical_resistance": 0,
+    "magic_resistance": 0,
+    "charm_resistance": 0,
+    "skills": {}, 
+    "equipped_weapon": ("", 0),
+    "equipped_armor": ("", 0),
+    "equipped_shield": ("", 0),
+    "equipped_spell": ("", 0),
+    "spells": {},
+    "inventory": {}
+    }  # Dictionary to store character data
+current_character = main_character.copy()  # Dictionary to store current character data
 
+# Function to clear the screen
 def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
     return
 
-# Function to define classes
-def character_classes():
-    return ["Warrior", "Mage", "Rogue", "Cleric"]
+# Function to create a warrior character
+def create_warrior():
+    current_character["class"] = "Warrior"
+    current_character["max_hp"] = 120
+    current_character["current_hp"] = 120
+    current_character["max_stamina"] = 120
+    current_character["current_stamina"] = 120
+    current_character["max_mana"] = 80
+    current_character["current_mana"] = 80
+    current_character["physical"] = 3
+    current_character["mental"] = 1
+    current_character["social"] = 1
+    current_character["combat_skill"] = 1
+    current_character["skills"] = {"Sword Slash": 1, "Shield Block": 1}
+
+# Function to create a mage character
+def create_mage():
+    current_character["class"] = "Mage"
+    current_character["max_hp"] = 80
+    current_character["current_hp"] = 80
+    current_character["max_stamina"] = 80
+    current_character["current_stamina"] = 80
+    current_character["max_mana"] = 120
+    current_character["current_mana"] = 120
+    current_character["physical"] = 1
+    current_character["mental"] = 3
+    current_character["social"] = 1
+    current_character["magic_skill"] = 1
+    current_character["skills"] = {"Burning Hands": 1, "Decipher Script": 1}
+
+# Function to create a rogue character
+def create_rogue():
+    current_character["class"] = "Rogue"
+    current_character["max_hp"] = 100
+    current_character["current_hp"] = 100
+    current_character["max_stamina"] = 100
+    current_character["current_stamina"] = 100
+    current_character["max_mana"] = 100
+    current_character["current_mana"] = 100
+    current_character["physical"] = 2
+    current_character["mental"] = 1
+    current_character["social"] = 2
+    current_character["charm_skill"] = 1
+    current_character["skills"] = {"Stealth": 1, "Pick Lock": 1}
+
+# Function to create a cleric character
+def create_cleric():
+    current_character["class"] = "Cleric"
+    current_character["max_hp"] = 100
+    current_character["current_hp"] = 100
+    current_character["max_stamina"] = 100
+    current_character["current_stamina"] = 100
+    current_character["max_mana"] = 100
+    current_character["current_mana"] = 100
+    current_character["physical"] = 1
+    current_character["mental"] = 2
+    current_character["social"] = 2
+    current_character["charm_skill"] = 1
+    current_character["skills"] = {"Heal": 1, "Persuade": 1}
 
 # Function to create a new character
 def create_character():
     clear_screen()
-    global main_character
+    global current_character
+    if current_character["player"] != "":
+        print("Character already exists. Do you want to overwrite it?")
+        choice = input("Enter 'Y' to overwrite or 'N' to cancel: ")
+        if choice.upper() != "Y":
+            print("Character creation cancelled.")
+            input("Press any key to return to main menu.")
+            return
     print("Creating a new character...\n")
-    player_name = input("Enter your name: ")
-    character_name = input("Enter your character's name: ")
-    #main_character["class"] = input("Choose your character's class: ")
+    current_character["player"] = input("Enter your name: ")
+    current_character["name"] = input("Enter your character's name: ")
     while True:
         try:
             choice = int(input("Choose your character's class:\n  1. Warrior\n  2. Mage\n  3. Rogue\n  4. Cleric\nEnter your choice: "))
             if choice == 1:
-                main_character = warrior_stats.copy()
+                create_warrior()
                 break
             elif choice == 2:
-                main_character = mage_stats.copy()
+                create_mage()
                 break
             elif choice == 3:
-                main_character = rogue_stats.copy()
+                create_rogue()
                 break
             elif choice == 4:
-                main_character = cleric_stats.copy()
+                create_cleric()
                 break
             else:
                 print("Invalid choice. Please try again.")
         except ValueError:
             print("Invalid choice. Please try again.")
-    main_character["player"] = player_name
-    main_character["character"] = character_name
+
     print("Character created successfully!")
     input("Press any key to return to main menu.")
-    return
+    return current_character
 
 # Function to display character information
 def display_character():
+    global current_character
     clear_screen()
-    if main_character["player"] == "":
+    if current_character["player"] == "":
         print("No character found. Please create a new character.")
         input("Press any key to return to main menu.")
         return
     print("Displaying character...")
-    print("Player: " + main_character["player"])
-    print("Character: " + main_character["character"])
-    print("Class: " + main_character["class"])
-    print("Level: " + str(main_character["level"]))
-    print("Max HP: " + str(main_character["max_hp"]))
-    print("Current HP: " + str(main_character["current_hp"]))
-    print("Max Stamina: " + str(main_character["max_stamina"]))
-    print("Current Stamina: " + str(main_character["current_stamina"]))
-    print("Max Mana: " + str(main_character["max_mana"]))
-    print("Current Mana: " + str(main_character["current_mana"]))
-    print("Physical: " + str(main_character["physical"]))
-    print("Mental: " + str(main_character["mental"]))
-    print("Social: " + str(main_character["social"]))
-    print("Skills: " + str(main_character["skills"]))
+    print(f"Player: {current_character["player"]}")
+    print(f"Character: {current_character["name"]}")
+    print(f"Class: {current_character["class"]}")
+    print(f"Level: {str(current_character["level"])}")
+    print(f"HP: {current_character["current_hp"]}/{current_character["max_hp"]}")
+    print(f"Stamina: {current_character["current_stamina"]}/{current_character["max_stamina"]}")
+    print(f"Mana: {current_character["current_mana"]}/{current_character["max_mana"]}")
+    print(f"Physical: {current_character["physical"]}  Mental: {current_character["mental"]}  Social: {current_character["social"]}")
+    print(f"Skills: {current_character["skills"]}")
     input("Press any key to return to main menu.")
     return
 
@@ -80,17 +165,16 @@ def display_character():
 def update_character():
     clear_screen()
     print("Updating character name...")
-    main_character["character"] = input("Enter your character's name: ")
+    current_character["name"] = input("Enter your character's name: ")
     print("Character updated successfully!")
     input("Press any key to return to main menu.")
-    return
 
 # Function to save character information
 def save_character():
     clear_screen()
     print("Saving character...")
     with open("character.txt", "w") as file:
-        file.write(str(main_character))
+        file.write(str(current_character))
     print("Character saved successfully!")
     input("Press any key to return to main menu.")
     return
@@ -98,10 +182,17 @@ def save_character():
 # Function to load character information
 def load_character():
     clear_screen()
+    global current_character
+    if current_character["player"] != "":
+        print("Character already exists. Do you want to overwrite it?")
+        choice = input("Enter 'Y' to overwrite or 'N' to cancel: ")
+        if choice.upper() != "Y":
+            print("Load character cancelled.")
+            input("Press any key to return to main menu.")
+            return
     print("Loading character...")
-    global main_character
     with open("character.txt", "r") as file:
-        main_character = eval(file.read())
+        current_character = eval(file.read())
     print("Character loaded successfully!")
     input("Press any key to return to main menu.")
     return
@@ -123,7 +214,7 @@ def run_menu():
         display_menu()
         choice = input("\nEnter your choice: ")
         if choice == "1":
-            create_character()
+            current_character = create_character()
         elif choice == "2":
             display_character()
         elif choice == "3":
