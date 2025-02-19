@@ -3,6 +3,7 @@
 # Load required libraries
 import os
 
+
 # Global variables
 main_character ={
     "player": "", 
@@ -188,13 +189,13 @@ def load_character():
         choice = input("Enter 'Y' to overwrite or 'N' to cancel: ")
         if choice.upper() != "Y":
             print("Load character cancelled.")
-            input("Press any key to return to main menu.")
+            input("Press any key to return to character menu.")
             return
     print("Loading character...")
     with open("character.txt", "r") as file:
         current_character = eval(file.read())
     print("Character loaded successfully!")
-    input("Press any key to return to main menu.")
+    input("Press any key to return to character menu.")
     return
 
 # Function to display the main menu
@@ -206,7 +207,7 @@ def display_menu():
     print("  3. Update character")
     print("  4. Save character")
     print("  5. Load character")
-    print("  6. Exit")
+    print("  6. Exit to Main Menu")
 
 # Function to run the main menu
 def run_menu():
@@ -224,7 +225,7 @@ def run_menu():
         elif choice == "5":
             load_character()
         elif choice == "6":
-            break
+            return
         else:
             print("Invalid choice. Please try again.")
 
@@ -237,4 +238,3 @@ if __name__ == "__main__":
     main()
 
 # End of program
-

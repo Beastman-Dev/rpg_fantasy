@@ -3,11 +3,11 @@
 # Import libraries
 import os
 import random
-# import player_character
+import player_character
 
 # Global variables
 # Player
-player_character = {
+test_character = {
     "player": "Test", 
     "name": "Hero", 
     "class": "Warrior", 
