@@ -137,29 +137,28 @@ def create_character():
         except ValueError:
             print("Invalid choice. Please try again.")
 
-    print("Character created successfully!")
-    input("Press any key to return to main menu.")
-    return current_character
+    clear_screen()
+    print("Character created successfully!\n")
+    display_character()
 
 # Function to display character information
 def display_character():
     global current_character
     clear_screen()
     if current_character["player"] == "":
-        print("No character found. Please create a new character.")
+        print("No character found. Please create a new character.\n")
         input("Press any key to return to main menu.")
         return
-    print("Displaying character...")
-    print(f"Player: {current_character["player"]}")
-    print(f"Character: {current_character["name"]}")
-    print(f"Class: {current_character["class"]}")
-    print(f"Level: {str(current_character["level"])}")
-    print(f"HP: {current_character["current_hp"]}/{current_character["max_hp"]}")
-    print(f"Stamina: {current_character["current_stamina"]}/{current_character["max_stamina"]}")
-    print(f"Mana: {current_character["current_mana"]}/{current_character["max_mana"]}")
-    print(f"Physical: {current_character["physical"]}  Mental: {current_character["mental"]}  Social: {current_character["social"]}")
-    print(f"Skills: {current_character["skills"]}")
-    input("Press any key to return to main menu.")
+    print("Displaying character...\n")
+    print(f"  Player: {current_character["player"]}")
+    print(f"  Character: {current_character["name"]}")
+    print(f"  Class: {current_character["class"]}  Level: {str(current_character["level"])}")
+    print(f"  HP: {current_character["current_hp"]}/{current_character["max_hp"]}")
+    print(f"  Stamina: {current_character["current_stamina"]}/{current_character["max_stamina"]}")
+    print(f"  Mana: {current_character["current_mana"]}/{current_character["max_mana"]}")
+    print(f"  Physical: {current_character["physical"]}  Mental: {current_character["mental"]}  Social: {current_character["social"]}")
+    print(f"  Skills: {current_character["skills"]}")
+    input("\nPress any key to return to character menu.")
     return
 
 # Function to update character information
@@ -168,7 +167,7 @@ def update_character():
     print("Updating character name...")
     current_character["name"] = input("Enter your character's name: ")
     print("Character updated successfully!")
-    input("Press any key to return to main menu.")
+    input("Press any key to return to character menu.")
 
 # Function to save character information
 def save_character():
@@ -177,7 +176,7 @@ def save_character():
     with open("character.txt", "w") as file:
         file.write(str(current_character))
     print("Character saved successfully!")
-    input("Press any key to return to main menu.")
+    input("Press any key to return to character menu.")
     return
 
 # Function to load character information
@@ -201,7 +200,7 @@ def load_character():
 # Function to display the main menu
 def display_menu():
     clear_screen()
-    print("Welcome to the Player Character Management System!\n")
+    print("Welcome to the Character Management System!\n")
     print("  1. Create character")
     print("  2. Display character")
     print("  3. Update character")
@@ -211,6 +210,7 @@ def display_menu():
 
 # Function to run the main menu
 def run_menu():
+    global current_character
     while True:
         display_menu()
         choice = input("\nEnter your choice: ")

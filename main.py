@@ -17,10 +17,19 @@ def welcome_screen():
     clear_screen()
     print(f"{welcome_text}\n")
     print(f"\nMain Menu\n")
-    print("1. Start Game")
-    print("2. Exit")
+    print("  1. Character Menu")
+    print("  2. Start Game")
+    print("  3. Exit")
     choice = input("\nEnter your choice: ")
     return choice
+
+def start_game():
+    clear_screen()
+    print("Starting game...")
+    time.sleep(1)
+    main()
+
+
 
 def main():
     choice = welcome_screen()
@@ -28,6 +37,8 @@ def main():
         player_character.run_menu()
         main()
     elif choice == "2":
+        start_game()
+    elif choice == "3":
         print("Exiting game...")
         time.sleep(1)
         clear_screen()
@@ -36,6 +47,8 @@ def main():
         time.sleep(1)
         main()
     return
+
+
 
 
 main()
