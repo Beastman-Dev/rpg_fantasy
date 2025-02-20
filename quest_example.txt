@@ -1,0 +1,35 @@
+Quest Name: Lost Puppy
+Quest Description: Search the Foreboding Forest for the missing dog, Puddles. Bring him safely back to the Lazy Dragon Inn and reunite the girl and her lost pet.
+Quest Type: Fetch
+Quest Difficulty: 1
+Quest Rewards (GP, XP): 0, 50
+Quest Requirements: Level 1
+Quest Stages: Find the lost puppy, Return the lost puppy to its owner
+
+
+
+Quest Stage 1: Find the lost puppy
+Round: check Mental to find puppy, check difficulty to find enemy
+Enemy: Goblin
+Check Complete: find puppy, defeat enemy
+Upon Completion: move to next stage
+
+Quest Stage 2: Return the lost puppy to its owner
+Round: none, automatic
+Enemy: none
+Check Complete: none, automatic
+Upon Completion: deliver rewards, remove quest
+
+quest_giver = "Little Ayia"
+
+quest_intro = "You see a small girl sitting at the bar, crying her eyes out. A matronly bar wench is doing her best to sooth the girl, with little effect.\nAs you approach the bar, the young girl sobs; 'I ain't gonna see Puddles again!' The older woman looks up at you helplessly as you draw near."
+
+quest_story = "Ayia was walking her dog Puddles near the Foreboding Forest earlier in the day when they startled a rabbit, which bolted into the woods. Before Ayia could react, Puddles took off in hot pursuit. She called for her pet and followed for a short time but soon lost track of the animals. Suddenly realizing how far into the dark and threatening woods she'd gotten, Ayia turned around and fled back to the safety of town. She went straight to the Lazy Dragon Inn, where her mother served food and drinks to the patrons."
+
+quest_brief = ""
+
+quest_reward = {"XP": 100, "GP": 10}
+
+quest_enemies = (3, ("Goblin", "Enemy", 1, 50, 0, 2, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 50))
+
+(self, name, type, challenge_rating, max_hp, max_mana, physical, mental, social, combat_skill, magic_skill, charm_skill, weapon_modifier, spell_modifier, social_modifier, physical_resistance, magic_resistance, charm_resistance, exp)
