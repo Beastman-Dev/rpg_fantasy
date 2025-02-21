@@ -4,6 +4,7 @@ import os
 import time
 import player_character
 import combat_system
+import quest_manager
 
 # Define global variables for game text
 welcome_text = "Welcome to First Fantasy RPG!"
