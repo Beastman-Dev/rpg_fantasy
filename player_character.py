@@ -146,8 +146,8 @@ def display_character():
     global current_character
     clear_screen()
     if current_character["player"] == "":
-        print("No character found. Please create a new character.\n")
-        input("Press any key to return to main menu.")
+        print("Please create a character first.\n")
+        input("Press ENTER to return to character menu.")
         return
     print("Displaying character...\n")
     print(f"  Player: {current_character["player"]}")
@@ -159,7 +159,7 @@ def display_character():
     print(f"  Physical: {current_character["physical"]}  Mental: {current_character["mental"]}  Social: {current_character["social"]}")
     print(f"  Skills: {current_character["skills"]}")
     input("\nPress any key to return to character menu.")
-    return
+
 
 # Function to update character information
 def update_character():
