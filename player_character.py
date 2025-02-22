@@ -2,7 +2,7 @@
 
 # Load required libraries
 import os
-
+import ast
 
 # Global variables
 main_character ={
@@ -42,6 +42,21 @@ current_character = main_character.copy()  # Dictionary to store current charact
 def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
     return
+
+# Functions for adding and removing inventory items
+
+def add_to_inventory(item, quantity=1):
+    if item in current_character["inventory"]:
+        current_character["inventory"][item] += quantity
+    else:
+        current_character["inventory"][item] = quantity
+
+def remove_from_inventory(item, quantity=1):
+    if item in current_character["inventory"]:
+        current_character["inventory"][item] -= quantity
+        if current_character["inventory"][item] <= 0:
+            del current_character["inventory"][item]
+
 
 # Function to create a warrior character
 def create_warrior():
@@ -192,7 +207,9 @@ def load_character():
             return
     print("Loading character...")
     with open("character.txt", "r") as file:
-        current_character = eval(file.read())
+        current_character = ast.literal_eval(file.read())
+    # with open("character.txt", "r") as file:
+    #     current_character = eval(file.read())
     print("Character loaded successfully!")
     input("Press any key to return to character menu.")
     return
@@ -215,7 +232,7 @@ def run_menu():
         display_menu()
         choice = input("\nEnter your choice: ")
         if choice == "1":
-            current_character = create_character()
+            create_character()
         elif choice == "2":
             display_character()
         elif choice == "3":
