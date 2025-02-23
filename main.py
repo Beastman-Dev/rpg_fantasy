@@ -1,6 +1,7 @@
 # Text-based fantasy rpg game
 
 import os
+import sys
 import time
 import player_character
 import combat_system
@@ -104,15 +105,40 @@ def main_menu():
     elif selection == 2:
         player_character.create_character()
     elif selection == 3:
-        pass
+        if current_character["player"] == "":
+            clear_screen()
+            print("Please load or create a character.\n")
+            print("Returning to main menu...")
+            time.sleep(2)
+            main_menu()
+        game_menu()
     elif selection == 4:
-        print("Exiting game...")
+        clear_screen()
+        print("Exiting game...\n")
         time.sleep(1)
         clear_screen()
-        return
+        print("Exiting game..\n")
+        time.sleep(1)
+        clear_screen()
+        print("Exiting game.\n")
+        time.sleep(1)
+        clear_screen()
+        print("Thanks for playing!\n")
+        sys.exit()
+    main_menu()
 
-
-
+def game_menu():
+    prompt = "Select an option from below:\n"
+    options = ["View character", "Enter town", "Exit to Main Menu"]
+    print("Game Menu:")
+    selection = universal_menu(prompt, options)
+    if selection == 1:
+        player_character.display_character()
+        game_menu()
+    elif selection == 2:
+        pass
+    elif selection == 3:
+        main_menu()
 
 def main():
     welcome_screen()
