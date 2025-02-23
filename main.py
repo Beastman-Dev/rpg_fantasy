@@ -33,14 +33,7 @@ def welcome_screen():
     print("| (         | |   | (\ (         ) |   | |     | (      | (   ) || | \   |   | |   | (   ) |      ) |   ) (     | (\ (   | (      | | \_  )(_)")
     print("| )      ___) (___| ) \ \__/\____) |   | |     | )      | )   ( || )  \  |   | |   | )   ( |/\____) |   | |     | ) \ \__| )      | (___) | _ ")
     print("|/       \_______/|/   \__/\_______)   )_(     |/       |/     \||/    )_)   )_(   |/     \|\_______)   \_/     |/   \__/|/       (_______)(_)")
-    print(f"\nMain Menu\n")
-    print("  1. Character Menu")
-    print("  2. Start Game")
-    print("  3. Exit")
-    choice = input("\nEnter your choice: ")
-    return choice
-
-
+    input("\nPress ENTER to begin game.")
 
 def universal_menu(prompt, options):
     """
@@ -68,12 +61,8 @@ def universal_menu(prompt, options):
         print("Invalid selection. Please try again.")
         input("Press ENTER to continue...")
 
-prompt = "Please select an option from the following list:\n"
-options = ["First choice", "Second choice", "Third choice"]
-print(universal_menu(prompt, options))
-
-
-# Function to display the main menu
+# Old character management menu
+"""
 def display_menu():
     clear_screen()
     print("Welcome to the Character Management System!\n")
@@ -105,28 +94,48 @@ def run_menu():
         else:
             print("Invalid choice. Please try again.")
 
-def start_game():
-    pass
-
-
-def main():
-    choice = welcome_screen()
-    if choice == "1":
-        run_menu()
-        main()
-    elif choice == "2":
-        start_game()
-    elif choice == "3":
+"""
+def main_menu():
+    prompt = "Select an option from below:\n"
+    options = ["Load character", "Create new character", "Start game", "Quit game"]
+    selection = universal_menu(prompt, options)
+    if selection == 1:
+        player_character.load_character()
+    elif selection == 2:
+        player_character.create_character()
+    elif selection == 3:
+        pass
+    elif selection == 4:
         print("Exiting game...")
         time.sleep(1)
         clear_screen()
-    else:
-        print("Invalid choice. Please try again.")
-        time.sleep(1)
-        main()
-    return
+        return
 
 
 
 
-#main()
+def main():
+    welcome_screen()
+    main_menu()
+
+    # if choice == "1":
+    #     run_menu()
+    #     main()
+    # elif choice == "2":
+    #     start_game()
+    # elif choice == "3":
+    #     print("Exiting game...")
+    #     time.sleep(1)
+    #     clear_screen()
+    # else:
+    #     print("Invalid choice. Please try again.")
+    #     time.sleep(1)
+    #     main()
+    # return
+
+
+
+
+
+
+main()
