@@ -3,6 +3,7 @@
 # Load required libraries
 import os
 import ast
+import time
 
 # Global variables
 main_character ={
@@ -161,8 +162,9 @@ def display_character():
     global current_character
     clear_screen()
     if current_character["player"] == "":
-        print("Please create a character first.\n")
-        input("Press ENTER to return to character menu.")
+        print("Please load or create a character first.\n")
+        print("Returning to main menu...\n")
+        time.sleep(2)
         return
     print("Displaying character...\n")
     print(f"  Player: {current_character["player"]}")
@@ -199,20 +201,23 @@ def load_character():
     clear_screen()
     global current_character
     if current_character["player"] != "":
-        print("Character already exists. Do you want to overwrite it?")
+        print("Character already exists. Do you want to overwrite it?\n")
         choice = input("Enter 'Y' to overwrite or 'N' to cancel: ")
         if choice.upper() != "Y":
-            print("Load character cancelled.")
+            clear_screen()
+            print("Load character cancelled.\n")
             input("Press any key to return to character menu.")
             return
-    print("Loading character...")
+    clear_screen()
+    print("Loading character...\n")
+    time.sleep(1)
     with open("character.txt", "r") as file:
         current_character = ast.literal_eval(file.read())
     # with open("character.txt", "r") as file:
     #     current_character = eval(file.read())
-    print("Character loaded successfully!")
+    print("  Character loaded successfully!\n")
     input("Press any key to return to character menu.")
-    return
+    return current_character
 
 # End of live code
 

@@ -97,30 +97,28 @@ def run_menu():
 
 """
 def main_menu():
-    prompt = "Select an option from below:\n"
-    options = ["Load character", "Create new character", "Start game", "Quit game"]
+    global current_character
+    prompt = "Main Menu:\n \nSelect an option from below:\n"
+    options = ["Load character", "Create new character", "View character", "Start game", "Quit game"]
     selection = universal_menu(prompt, options)
     if selection == 1:
-        player_character.load_character()
+        current_character = player_character.load_character()
     elif selection == 2:
-        player_character.create_character()
+        current_character = player_character.create_character()
     elif selection == 3:
+        player_character.display_character()
+    elif selection == 4:
         if current_character["player"] == "":
             clear_screen()
             print("Please load or create a character.\n")
-            print("Returning to main menu...")
+            print("Returning to main menu...\n")
             time.sleep(2)
             main_menu()
+        input()
         game_menu()
-    elif selection == 4:
+    elif selection == 5:
         clear_screen()
         print("Exiting game...\n")
-        time.sleep(1)
-        clear_screen()
-        print("Exiting game..\n")
-        time.sleep(1)
-        clear_screen()
-        print("Exiting game.\n")
         time.sleep(1)
         clear_screen()
         print("Thanks for playing!\n")
@@ -128,9 +126,8 @@ def main_menu():
     main_menu()
 
 def game_menu():
-    prompt = "Select an option from below:\n"
+    prompt = "Game Menu:\n \nSelect an option from below:\n"
     options = ["View character", "Enter town", "Exit to Main Menu"]
-    print("Game Menu:")
     selection = universal_menu(prompt, options)
     if selection == 1:
         player_character.display_character()
@@ -158,10 +155,5 @@ def main():
     #     time.sleep(1)
     #     main()
     # return
-
-
-
-
-
 
 main()
