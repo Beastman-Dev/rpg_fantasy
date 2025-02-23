@@ -40,18 +40,79 @@ def welcome_screen():
     choice = input("\nEnter your choice: ")
     return choice
 
-# def start_game():
-#     clear_screen()
-#     print("Starting game...")
-#     time.sleep(1)
-#     main()
 
+
+def universal_menu(prompt, options):
+    """
+    Displays a menu with the given options and prompts the user for a selection.
+
+    Args:
+        prompt (str): The prompt to display before the menu options.
+        options (list): A list of menu option strings.
+
+    Returns:
+        int: The index (1-based) of the selected option.
+    """
+    while True:
+        clear_screen()
+        print(prompt)
+        for i, option in enumerate(options, 1):
+            print(f"  {i}. {option}")
+
+        choice = input("\nEnter your choice: ").strip()
+
+        if choice.isdigit():
+            choice = int(choice)
+            if 1 <= choice <= len(options):
+                return choice
+        print("Invalid selection. Please try again.")
+        input("Press ENTER to continue...")
+
+prompt = "Please select an option from the following list:\n"
+options = ["First choice", "Second choice", "Third choice"]
+print(universal_menu(prompt, options))
+
+
+# Function to display the main menu
+def display_menu():
+    clear_screen()
+    print("Welcome to the Character Management System!\n")
+    print("  1. Create character")
+    print("  2. Display character")
+    print("  3. Update character name")
+    print("  4. Save character")
+    print("  5. Load character")
+    print("  6. Exit to Main Menu")
+
+# Function to run the main menu
+def run_menu():
+    global current_character
+    while True:
+        display_menu()
+        choice = input("\nEnter your choice: ")
+        if choice == "1":
+            player_character.create_character()
+        elif choice == "2":
+            player_character.display_character()
+        elif choice == "3":
+            player_character.update_character()
+        elif choice == "4":
+            player_character.save_character()
+        elif choice == "5":
+            player_character.load_character()
+        elif choice == "6":
+            return
+        else:
+            print("Invalid choice. Please try again.")
+
+def start_game():
+    pass
 
 
 def main():
     choice = welcome_screen()
     if choice == "1":
-        player_character.run_menu()
+        run_menu()
         main()
     elif choice == "2":
         start_game()
@@ -68,4 +129,4 @@ def main():
 
 
 
-main()
+#main()

@@ -214,44 +214,40 @@ def load_character():
     input("Press any key to return to character menu.")
     return
 
-# Function to display the main menu
-def display_menu():
-    clear_screen()
-    print("Welcome to the Character Management System!\n")
-    print("  1. Create character")
-    print("  2. Display character")
-    print("  3. Update character")
-    print("  4. Save character")
-    print("  5. Load character")
-    print("  6. Exit to Main Menu")
+# End of live code
 
-# Function to run the main menu
-def run_menu():
-    global current_character
-    while True:
-        display_menu()
-        choice = input("\nEnter your choice: ")
-        if choice == "1":
-            create_character()
-        elif choice == "2":
-            display_character()
-        elif choice == "3":
-            update_character()
-        elif choice == "4":
-            save_character()
-        elif choice == "5":
-            load_character()
-        elif choice == "6":
-            return
-        else:
-            print("Invalid choice. Please try again.")
+# Archive___________________________________________________
+# Moved the following code to main.py - to be removed later
+# # Function to display the main menu
+# def display_menu():
+#     clear_screen()
+#     print("Welcome to the Character Management System!\n")
+#     print("  1. Create character")
+#     print("  2. Display character")
+#     print("  3. Update character")
+#     print("  4. Save character")
+#     print("  5. Load character")
+#     print("  6. Exit to Main Menu")
 
-# Main function
-def main():
-    run_menu()
+# # Function to run the main menu
+# def run_menu():
+#     global current_character
+#     while True:
+#         display_menu()
+#         choice = input("\nEnter your choice: ")
+#         if choice == "1":
+#             create_character()
+#         elif choice == "2":
+#             display_character()
+#         elif choice == "3":
+#             update_character()
+#         elif choice == "4":
+#             save_character()
+#         elif choice == "5":
+#             load_character()
+#         elif choice == "6":
+#             return
+#         else:
+#             print("Invalid choice. Please try again.")
 
-# Entry point of the program
-if __name__ == "__main__":
-    main()
-
-# End of program
+# End of player_character.py
