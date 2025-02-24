@@ -2,9 +2,14 @@
 # {Quest(quest_name, quest_description, quest_type, quest_difficulty, quest_rewards, quest_requirements, quest_stages)}
 
 import os
+import random
+import time
 
 # Global variables
 quests = {}
+GP = 0
+XP = 0
+
 
 # Classes
 
@@ -79,3 +84,60 @@ def test_function():
     print(f"  Quest Rewards: {quest_manager.get_quest("Lost Puppy").quest_rewards}")
     print(f"  Quest Requirements: {quest_manager.get_quest("Lost Puppy").quest_requirements}")
     print(f"  Quest Stages: {quest_manager.get_quest("Lost Puppy").quest_stages}")
+
+def enemy_encounter():
+    name = ""
+    type = "Enemy Encounter"
+    difficulty = 0
+    enemies = {}
+    drops = ""
+
+def obstacle():
+    name = ""
+    type = "Obstacle"
+    difficulty = 0
+    test_attribute = ""
+    consequence = ""
+
+# Example Enemy Encounters
+goblin_solo = {"name": "Lone Goblin", "type": "Enemy Encounter", "difficulty": 1, "enemies": {"goblins": 1}, "drops": (GP, XP)}
+goblin_patrol = {"name": "Goblin Patrol", "type": "Enemy Encounter", "difficulty": 2, "enemies": {"goblins": 3}, "drops": (GP, XP)}
+goblin_hunting_party = {"name": "Goblin Warband", "type": "Enemy Encounter", "difficulty": 5, "enemies": {"goblins": 5, "goblin champion": 1, "goblin mystic": 1}, "drops": (GP, XP)}
+goblin_camp = {"name": "Goblin Camp", "type": "Enemy Encounter", "difficulty": 10, "enemies": {"goblins": 25, "goblin champion": 5, "goblin mystic": 3, "goblin shaman": 1, "goblin chief": 1}, "drops": (GP, XP)}
+
+# Example Obstacles
+find_puddles = {"name": "Find Puddles in Woods", "type": "obstacle", "difficulty": 1, "test_attribute": "Mental", "consequences": None, "rewards": None}
+thorny_brambles = {"name": "Thorny Brambles", "type": "Obstacle", "difficulty": 1, "test_attribute": "Physical", "consequences": {"HP": -1}, "rewards": None}
+
+
+
+
+# Example Quests
+lost_puppy = {"name": "Lost Puppy", "type": "Fetch", "description": "Find the lost puppy and return it to its owner.", "location": "The Foreboding Forest", "stages": ("Find the Lost Puppy", "Rescue the Lost Puppy", "Return the Lost Puppy")}
+find_the_lost_puppy = {"turns": 5, "obstacles": {"search": find_puddles, }}
+
+def game_loop(duration, ability, difficulty, success_requirement, failure_limit):
+    success_count = 0
+    failure_count = 0
+    for x in range(duration):
+        effort = ability + random.randrange(0,5)
+        resistance = difficulty + random.randrange(0,5)
+        print(f"Testing... you rolled a {effort} against a difficulty of {resistance}.\n")
+        if effort >= resistance:
+            print("   You made progress...\n")
+            success_count += 1
+        else:
+            print("   You failed to make progress...\n")
+            failure_count += 1
+        if success_count >= success_requirement or failure_count >= failure_limit:
+            break
+    print(f"The challenge took {x + 1} rounds\n")
+    if success_count >= success_requirement:
+        print("CONGRATULATIONS! You were ultimately successful.\n")
+    else:
+        print("You ultimately failed. Please try again.\n")
+
+
+# game_loop(10, 3, 1, 5, 3)
+
+challenge_description = "Try to find the dog Puddles before it gets dark outside and the danger increases. You have five hours and each check requires an hour of time. If you gain three successes you find him. For each two failures, you encounter a goblin patrol. If you fail to locate Puddles before dark, you'll have a difficult decision to make."

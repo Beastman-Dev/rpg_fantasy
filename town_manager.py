@@ -37,27 +37,32 @@ town_locations = {
     "Inn": {
         "Name": "Lazy Dragon Inn and Tavern",
         "Services": ["Rest", "Gossip", "Quests"],
-        "Patron": Town_NPCs["Innkeeper Davrid Havenrest"]
+        "Patron": Town_NPCs["Innkeeper Davrid Havenrest"],
+        "Greeting": "Welcome adventurer! What can I do for you today?"
     },
     "Blacksmith": {
         "Name": "Bleeding Edge Blacksmith",
         "Services": ["Buy", "Sell", "Upgrade"],
-        "Patron": Town_NPCs["Blacksmith Gendry Ironheart"]
+        "Patron": Town_NPCs["Blacksmith Gendry Ironheart"],
+        "Greeting": "Welcome adventurer! What can I do for you today?"
     },
     "Alchemist": {
         "Name": "Leaky Cauldron Alchemist",
         "Services": ["Buy", "Sell", "Brew"],
-        "Patron": Town_NPCs["Alchemist Elara Moonshadow"]
+        "Patron": Town_NPCs["Alchemist Elara Moonshadow"],
+        "Greeting": "Welcome adventurer! What can I do for you today?"
     },
     "Cleric": {
         "Name": "Temple of Light Cleric",
         "Services": ["Heal", "Bless", "Cure"],
-        "Patron": Town_NPCs["Matron Sylia Lightbringer"]
+        "Patron": Town_NPCs["Matron Sylia Lightbringer"],
+        "Greeting": "Welcome adventurer! What can I do for you today?"
     },
     "General Store": {
         "Name": "General Goods Store",
         "Services": ["Buy", "Sell", "Trade"],
-        "Patron": Town_NPCs["Merchant Tavros Goldleaf"]
+        "Patron": Town_NPCs["Merchant Tavros Goldleaf"],
+        "Greeting": "Welcome adventurer! What can I do for you today?"
     }
 }
 
@@ -67,4 +72,15 @@ def list_town_locations():
         locations_list.append(f"{location}: {town_locations[location]["Name"]}")
     return locations_list
 
-print(list_town_locations())
+def location_inn():
+    name = town_locations["Inn"]["Name"]
+    vendor = town_locations["Inn"]["Patron"]
+    services = town_locations["Inn"]["Services"]
+    greeting = "Welcome adventurer! What can I do for you today?"
+
+
+
+# inn_prompt = town_locations["Inn"]["Greeting"]
+# inn_options = town_locations["Inn"]["Services"]
+# print(inn_prompt)
+# print(inn_options)
