@@ -156,6 +156,7 @@ def create_character():
     clear_screen()
     print("Character created successfully!\n")
     display_character()
+    return current_character
 
 # Function to display character information
 def display_character():
@@ -208,6 +209,11 @@ def load_character():
             print("Load character cancelled.\n")
             input("Press any key to return to character menu.")
             return
+    if os.path.exists("character.txt") == False:
+        print("No save file found.\n")
+        print("Returning to main menu...\n")
+        time.sleep(2)
+        return
     clear_screen()
     print("Loading character...\n")
     time.sleep(1)

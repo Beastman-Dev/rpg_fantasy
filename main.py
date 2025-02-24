@@ -6,6 +6,7 @@ import time
 import player_character
 import combat_system
 import quest_manager
+import town_manager
 
 # Define global variables
 current_character = player_character.current_character
@@ -114,7 +115,9 @@ def main_menu():
             print("Returning to main menu...\n")
             time.sleep(2)
             main_menu()
-        input()
+        #input()
+        print("Loading game menu...\n")
+        time.sleep(2)
         game_menu()
     elif selection == 5:
         clear_screen()
@@ -136,6 +139,10 @@ def game_menu():
         pass
     elif selection == 3:
         main_menu()
+
+def display_town():
+    print(town_manager.list_town_locations())
+
 
 def main():
     welcome_screen()
