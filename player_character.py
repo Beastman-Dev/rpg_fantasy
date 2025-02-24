@@ -44,6 +44,10 @@ def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
     return
 
+# Function to pause for one second
+def pause_continue():
+    time.sleep(2)
+
 # Functions for adding and removing inventory items
 
 def add_to_inventory(item, quantity=1):
@@ -165,7 +169,7 @@ def display_character():
     if current_character["player"] == "":
         print("Please load or create a character first.\n")
         print("Returning to main menu...\n")
-        time.sleep(2)
+        pause_continue()
         return
     print("Displaying character...\n")
     print(f"  Player: {current_character["player"]}")
@@ -211,17 +215,17 @@ def load_character():
     if os.path.exists("character.txt") == False:
         print("No save file found.\n")
         print("Returning to main menu...\n")
-        time.sleep(2)
+        pause_continue()
         return
     clear_screen()
     print("Loading character...\n")
-    time.sleep(1)
+    pause_continue()
     with open("character.txt", "r") as file:
         current_character = ast.literal_eval(file.read())
     # with open("character.txt", "r") as file:
     #     current_character = eval(file.read())
     print("  Character loaded successfully!\n")
-    input("Press any key to return to character menu.")
+    pause_continue()
     return current_character
 
 # End of player_character.py

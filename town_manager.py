@@ -33,7 +33,7 @@ Town_NPCs = {
 
 misc_npc_names = ["Bedru", "Tucyr", "Ogden", "Gauer", "Fulcor", "Strath", "Hodun-zak", "Gendow", "Sorlon", "Dalvas", "Hap Lu", "Loran", "Arnesan", "Fruela"]
 
-Town_Locations = {
+town_locations = {
     "Inn": {
         "Name": "Lazy Dragon Inn and Tavern",
         "Services": ["Rest", "Gossip", "Quests"],
@@ -62,9 +62,9 @@ Town_Locations = {
 }
 
 def list_town_locations():
-    print("Town Locations:\n")
-    for location in Town_Locations:
-        print(f"  {location}: {Town_Locations[location]['Name']}")
-    return
+    locations_list = []
+    for location in town_locations:
+        locations_list.append(f"{location}: {town_locations[location]["Name"]}")
+    return locations_list
 
-list_town_locations()
+print(list_town_locations())
