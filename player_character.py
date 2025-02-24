@@ -178,8 +178,7 @@ def display_character():
     print(f"  Skills: {current_character["skills"]}")
     input("\nPress any key to return to character menu.")
 
-
-# Function to update character information
+# Function to update character name
 def update_character():
     clear_screen()
     print("Updating character name...")
@@ -224,41 +223,5 @@ def load_character():
     print("  Character loaded successfully!\n")
     input("Press any key to return to character menu.")
     return current_character
-
-# End of live code
-
-# Archive___________________________________________________
-# Moved the following code to main.py - to be removed later
-# # Function to display the main menu
-# def display_menu():
-#     clear_screen()
-#     print("Welcome to the Character Management System!\n")
-#     print("  1. Create character")
-#     print("  2. Display character")
-#     print("  3. Update character")
-#     print("  4. Save character")
-#     print("  5. Load character")
-#     print("  6. Exit to Main Menu")
-
-# # Function to run the main menu
-# def run_menu():
-#     global current_character
-#     while True:
-#         display_menu()
-#         choice = input("\nEnter your choice: ")
-#         if choice == "1":
-#             create_character()
-#         elif choice == "2":
-#             display_character()
-#         elif choice == "3":
-#             update_character()
-#         elif choice == "4":
-#             save_character()
-#         elif choice == "5":
-#             load_character()
-#         elif choice == "6":
-#             return
-#         else:
-#             print("Invalid choice. Please try again.")
 
 # End of player_character.py

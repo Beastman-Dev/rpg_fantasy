@@ -7,6 +7,7 @@ import player_character
 import combat_system
 import quest_manager
 import town_manager
+import pyfiglet
 
 # Define global variables
 current_character = player_character.current_character
@@ -145,7 +146,8 @@ def display_town():
 
 
 def main():
-    welcome_screen()
+    print(pyfiglet.figlet_format("First Fantasy RPG", font="standard"))
+    input("Press any key to continue")
     main_menu()
 
     # if choice == "1":
