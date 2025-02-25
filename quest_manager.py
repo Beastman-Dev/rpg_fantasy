@@ -144,7 +144,7 @@ def game_loop(duration, ability, difficulty, success_requirement, failure_limit)
 description_text = "Try to find the dog Puddles before it gets dark outside and the danger increases. You have eight hours and each check requires an hour of time. If you gain three successes you find him. For each two failures, you encounter a goblin patrol. If you fail to locate Puddles before dark, you'll need to decide if you want to continue to search at night. During the night it becomes more difficult to succeed and the goblin patrols are more frequent."
 success_text = "You spot some tracks and follow the trail. They are sporadic and hard to discern from the tracks of other animals... and goblins."
 failure_text = "The trail goes cold and you continue in the direction you think they were headed, hoping for the best."
-darkness_text = "Your heart sinks with the fading sunlight. No luck in finding the missing dog yet, and the trail will be all but impossible to find at night."
+stage_end_text = "Your heart sinks with the fading sunlight. No luck in finding the missing dog yet, and the trail will be all but impossible to find at night."
 decision_text = "With little light left, you're forced to either give up until the morning or light a torch and continue the search into the night. Torchlight will attract enemies and it will be even more difficult to find the trail, if you do."
 duration = 8
 encounter_frequency = 3
