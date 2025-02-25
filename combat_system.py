@@ -5,6 +5,44 @@ import os
 import random
 import player_character
 
+# Test of classes
+
+class Creature:
+    def __init__(self, name: str, hit_points: int, attack: int) -> None:
+        self.name = name
+        self.hit_points = hit_points
+        self.attack = attack
+
+    def take_damage(self, damage):
+        self.hit_points -= damage
+
+class Enemy(Creature):
+    def __init__(self, name: str, hit_points: int, attack: int) -> None:
+        super().__init__(name, hit_points, attack)
+
+class Hero(Creature):
+    def __init__(self, name: str, hit_points: int, attack: int) -> None:
+        super().__init__(name, hit_points, attack)
+
+def combat_round(attacker, defender):
+    defender.take_damage(attacker.attack)
+    print(f"{attacker.name} attacks {defender.name} for {attacker.attack} damage.")
+    if defender.hit_points <= 0:
+        raise Exception(f"{defender.name} is DEAD!")
+    print(f"{defender.name} is down to {defender.hit_points} HP.")
+
+goblin_1: Enemy = Enemy("Goblin 1", 25, 2)
+hero_1: Hero = Hero("Victor", 100, 5)
+
+while True:
+    try:
+        combat_round(hero_1, goblin_1)
+        combat_round(goblin_1, hero_1)
+    except Exception as e:
+        print(e)
+        break
+
+
 # Global variables
 # Player
 test_character = {
