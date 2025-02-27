@@ -1,3 +1,6 @@
+# Import libraries
+import time
+
 # Global variables
 main_character ={
     "player": "", 
@@ -32,3 +35,6 @@ main_character ={
     }  # Dictionary to store character data
 current_character = main_character.copy()
 current_location = {}
+
+def pause(seconds):
+    time.sleep(seconds)

@@ -3,65 +3,12 @@
 # Load required libraries
 import os
 import ast
-import time
-
-# Global variables
-main_character ={
-    "player": "", 
-    "name": "", 
-    "class": "", 
-    "level": 1, 
-    "max_hp": 0, 
-    "current_hp": 0, 
-    "max_stamina": 0, 
-    "current_stamina": 0, 
-    "max_mana": 0, 
-    "current_mana": 0, 
-    "physical": 0, 
-    "mental": 0, 
-    "social": 0, 
-    "combat_skill": 0,
-    "magic_skill": 0,
-    "charm_skill": 0,
-    "weapon_modifier": 0,
-    "spell_modifier": 0,
-    "social_modifier": 0,
-    "physical_resistance": 0,
-    "magic_resistance": 0,
-    "charm_resistance": 0,
-    "skills": {}, 
-    "equipped_weapon": ("", 0),
-    "equipped_armor": ("", 0),
-    "equipped_shield": ("", 0),
-    "equipped_spell": ("", 0),
-    "spells": {},
-    "inventory": {}
-    }  # Dictionary to store character data
-current_character = main_character.copy()  # Dictionary to store current character data
+from config import *
 
 # Function to clear the screen
 def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
     return
-
-# Function to pause for one second
-def pause_continue():
-    time.sleep(2)
-
-# Functions for adding and removing inventory items
-
-def add_to_inventory(item, quantity=1):
-    if item in current_character["inventory"]:
-        current_character["inventory"][item] += quantity
-    else:
-        current_character["inventory"][item] = quantity
-
-def remove_from_inventory(item, quantity=1):
-    if item in current_character["inventory"]:
-        current_character["inventory"][item] -= quantity
-        if current_character["inventory"][item] <= 0:
-            del current_character["inventory"][item]
-
 
 # Function to create a warrior character
 def create_warrior():
@@ -169,7 +116,7 @@ def display_character():
     if current_character["player"] == "":
         print("Please load or create a character first.\n")
         print("Returning to main menu...\n")
-        pause_continue()
+        pause(2)
         return
     print("Displaying character...\n")
     print(f"  Player: {current_character["player"]}")
@@ -215,17 +162,32 @@ def load_character():
     if os.path.exists("character.txt") == False:
         print("No save file found.\n")
         print("Returning to main menu...\n")
-        pause_continue()
+        pause(2)
         return
     clear_screen()
     print("Loading character...\n")
-    pause_continue()
+    pause(2)
     with open("character.txt", "r") as file:
         current_character = ast.literal_eval(file.read())
     # with open("character.txt", "r") as file:
     #     current_character = eval(file.read())
     print("  Character loaded successfully!\n")
-    pause_continue()
+    pause(2)
     return current_character
+
+# Unit tests
+
+# Unit test for create_character function
+#create_character()
+
+# Unit test for display_character function with no player name defined
+#display_character()
+
+# Unit test for display_character function with player name assigned
+#current_character["player"] = "Bill"
+#display_character()
+
+# Unit test for update_character function
+update_character()
 
 # End of player_character.py

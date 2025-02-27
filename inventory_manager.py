@@ -1,3 +1,5 @@
+from config import *
+
 # Functions for adding and removing inventory items
 
 def add_to_inventory(item, quantity=1):
