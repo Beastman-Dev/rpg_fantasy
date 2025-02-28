@@ -189,5 +189,6 @@ def load_character():
 
 # Unit test for update_character function
 update_character()
+print(current_character["name"])
 
 # End of player_character.py
